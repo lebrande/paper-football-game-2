@@ -21,6 +21,7 @@
   "homepage": "https://github.com/lebrande/paper-football-game-2#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
     "sass": "^1.24.0"
   }
 }
