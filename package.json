@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/lebrande/paper-football-game-2#readme",
   "devDependencies": {
+    "eslint": "^6.8.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
