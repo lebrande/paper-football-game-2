@@ -1,4 +1,3 @@
-import { IGameElement } from '../types/GameElement';
 import GameField from './GameField';
 import { mouseClickInput$ } from '../input/mouseInput';
 
@@ -7,7 +6,7 @@ import {
   GAME_HEIGHT,
 } from '../const/CONFIG';
 
-export default class Game implements IGameElement {
+export default class Game {
   private ctx: CanvasRenderingContext2D;
   private gameField: GameField;
 
