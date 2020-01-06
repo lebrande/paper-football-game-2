@@ -1,9 +1,9 @@
-export type TPosition = {
-  x: number;
-  y: number;
-};
+export type TPosition = [
+  number, // x
+  number, // y
+];
 
-export type TPointPosition = {
+export type TCoordinates = {
   row: number;
   column: number;
 };

@@ -1,13 +1,15 @@
-export const UP = 1;
-export const UP_LEFT = 2;
-export const LEFT = 4;
-export const DOWN_LEFT = 8;
-export const DOWN = 16;
-export const DOWN_RIGHT = 32;
-export const RIGHT = 64;
-export const UP_RIGHT = 128;
+import { TDirection } from '../types/Direction';
 
-export const DIRECTIONS = [
+export const UP: TDirection = 1;
+export const UP_LEFT: TDirection = 2;
+export const LEFT: TDirection = 4;
+export const DOWN_LEFT: TDirection = 8;
+export const DOWN: TDirection = 16;
+export const DOWN_RIGHT: TDirection = 32;
+export const RIGHT: TDirection = 64;
+export const UP_RIGHT: TDirection = 128;
+
+export const DIRECTIONS: TDirection[] = [
   UP,
   UP_LEFT,
   LEFT,
