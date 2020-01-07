@@ -1,3 +1,7 @@
 #game_screen {
   border: 1px solid #000;
+  
+  &:hover {
+    cursor: pointer;
+  }
 }

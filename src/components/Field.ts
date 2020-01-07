@@ -93,6 +93,7 @@ export default class Field {
 
     DIRECTIONS.forEach((direction) => {
       if (direction & this.state) {
+        this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = '#003300';
         this.ctx.beginPath();
         this.ctx.moveTo(centerX, centerY);
