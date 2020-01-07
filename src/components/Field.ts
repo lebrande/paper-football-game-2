@@ -24,6 +24,7 @@ export default class Field {
   private ctx: CanvasRenderingContext2D;
   private coordinates: TCoordinates;
   private state: number;
+  private isAvailable: boolean = false;
 
   public constructor(
     ctx: CanvasRenderingContext2D,
@@ -33,6 +34,21 @@ export default class Field {
     this.ctx = ctx;
     this.coordinates = coordinates;
     this.state = state;
+  }
+
+  private drawHighlight() {
+    const [x, y] = getStartPosition(this.coordinates, FIELD_WIDTH, FIELD_HEIGHT);
+
+    this.ctx.beginPath();
+    this.ctx.rect(
+      x,
+      y,
+      FIELD_WIDTH,
+      FIELD_HEIGHT,
+    );
+    this.ctx.lineWidth = 4;
+    this.ctx.strokeStyle = '#FF0';
+    this.ctx.stroke();
   }
 
   private drawPoint(): void {
@@ -77,6 +93,7 @@ export default class Field {
 
     DIRECTIONS.forEach((direction) => {
       if (direction & this.state) {
+        this.ctx.strokeStyle = '#003300';
         this.ctx.beginPath();
         this.ctx.moveTo(centerX, centerY);
 
@@ -112,12 +129,23 @@ export default class Field {
     });
   }
 
-  public updateState(direction: TDirection) {
+  getAvailability() {
+    return this.isAvailable;
+  }
+
+  setAvailability(availability: boolean) {
+    this.isAvailable = availability;
+  }
+
+  updateState(direction: TDirection) {
     this.state += direction;
   }
 
-  public draw() {
+  draw() {
     this.drawUsedDirections();
     this.drawPoint();
+    if (this.isAvailable) {
+      this.drawHighlight();
+    }
   }
 }

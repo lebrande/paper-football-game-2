@@ -5,8 +5,8 @@ export const COLUMNS_NUMBER = 7;
 export const GAME_WIDTH = 350;
 export const GAME_HEIGHT = 550;
 export const START_COORDINATES: TCoordinates = {
-  column: 5,
-  row: 3,
+  column: 3,
+  row: 5,
 };
 
 export const FIELD_WIDTH = GAME_WIDTH / COLUMNS_NUMBER;

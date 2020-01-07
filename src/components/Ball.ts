@@ -19,6 +19,10 @@ export default class Ball {
     this.coordinates = START_COORDINATES;
   }
 
+  getCoordinates() {
+    return this.coordinates;
+  }
+
   moveTo(coordinates: TCoordinates) {
     this.coordinates = coordinates;
   }
