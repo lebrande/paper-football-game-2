@@ -6,7 +6,7 @@ import {
   FIELD_HEIGHT,
 } from '../const/CONFIG';
 
-import { TCoordinates } from '../types/Position';
+import { TCoordinates } from '../types';
 
 const RADIUS = 10;
 
@@ -19,7 +19,7 @@ export default class Ball {
     this.coordinates = START_COORDINATES;
   }
 
-  getCoordinates() {
+  getCoordinates(): TCoordinates {
     return this.coordinates;
   }
 

@@ -1,4 +1,4 @@
-import { TCoordinates, TPosition } from '../types/Position';
+import { TCoordinates, TPosition } from '../types';
 
 export const getEndPosition = (
   coordinates: TCoordinates,

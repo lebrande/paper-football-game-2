@@ -3,7 +3,7 @@ import { getStartPosition } from '../lib/getStartPosition';
 import { getEndPosition } from '../lib/getEndPosition';
 
 import {
-  DIRECTIONS,
+  TRANSFORMATIONS,
   UP,
   UP_LEFT,
   LEFT,
@@ -12,11 +12,11 @@ import {
   DOWN_RIGHT,
   RIGHT,
   UP_RIGHT,
-} from '../const/DIRECTIONS';
-import { FIELD_WIDTH, FIELD_HEIGHT } from '../const/CONFIG';
+} from '../const/TRANSFORMATIONS';
+import { FIELD_WIDTH, FIELD_HEIGHT, HIDDEN_COORDINATES } from '../const/CONFIG';
 
-import { TDirection } from '../types/Direction';
-import { TCoordinates } from '../types/Position';
+import { TDirection } from '../types';
+import { TCoordinates } from '../types';
 
 const POINT_RADIUS = 3;
 
@@ -24,7 +24,7 @@ export default class Field {
   private ctx: CanvasRenderingContext2D;
   private coordinates: TCoordinates;
   private state: number;
-  private isAvailable: boolean = false;
+  private direction: TDirection | null = null;
 
   public constructor(
     ctx: CanvasRenderingContext2D,
@@ -91,7 +91,7 @@ export default class Field {
       FIELD_HEIGHT,
     );
 
-    DIRECTIONS.forEach((direction) => {
+    TRANSFORMATIONS.forEach(([direction]) => {
       if (direction & this.state) {
         this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = '#003300';
@@ -130,22 +130,32 @@ export default class Field {
     });
   }
 
-  getAvailability() {
-    return this.isAvailable;
+  getDirection() {
+    return this.direction;
   }
 
-  setAvailability(availability: boolean) {
-    this.isAvailable = availability;
+  setDirection(direction: TDirection) {
+    this.direction = direction;
   }
 
   updateState(direction: TDirection) {
     this.state += direction;
   }
 
+  getState() {
+    return this.state;
+  }
+
   draw() {
+    if (HIDDEN_COORDINATES.some(
+      (c) => c.row === this.coordinates.row && c.column === this.coordinates.column,
+    )) {
+      return;
+    }
+
     this.drawUsedDirections();
     this.drawPoint();
-    if (this.isAvailable) {
+    if (!!this.direction) {
       this.drawHighlight();
     }
   }
